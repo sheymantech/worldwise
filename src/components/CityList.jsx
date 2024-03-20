@@ -5,7 +5,7 @@ import Message from "./Message";
 
 function CityList({ cities, isLoading }) {
   if (isLoading) return <Spinner />;
-  if (!cities.length)
+  if (cities.length === 0)
     return (
       <Message message="add your first city by clicking on a city on the map" />
     );
