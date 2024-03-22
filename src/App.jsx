@@ -9,27 +9,30 @@ import CityList from "./components/CityList";
 import CountryList from "./components/countryList";
 import City from "./components/City";
 import Form from "./components/Form";
+import { CitiesProvider } from "./contexts/citiesContext";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="Products" element={<Product />} />
-        <Route path="pricing" element={<Pricing />} />
-        <Route path="/" element={<Homepage />} />
-        <Route path="*" element={<PageNotFound />} />
-        <Route path="app" element={<AppLayout />}>
-          <Route index element={<Navigate replace to="cities" />} />
-          <Route path="cities" element={<CityList />} />
+    <CitiesProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="Products" element={<Product />} />
+          <Route path="pricing" element={<Pricing />} />
+          <Route path="/" element={<Homepage />} />
+          <Route path="*" element={<PageNotFound />} />
+          <Route path="app" element={<AppLayout />}>
+            <Route index element={<Navigate replace to="cities" />} />
+            <Route path="cities" element={<CityList />} />
 
-          <Route path="cities/:id" element={<City />} />
+            <Route path="cities/:id" element={<City />} />
 
-          <Route path="countries" element={<CountryList />} />
-          <Route path="form" element={<Form />} />
-        </Route>
-        <Route path="login" element={<Login />} />
-      </Routes>
-    </BrowserRouter>
+            <Route path="countries" element={<CountryList />} />
+            <Route path="form" element={<Form />} />
+          </Route>
+          <Route path="login" element={<Login />} />
+        </Routes>
+      </BrowserRouter>
+    </CitiesProvider>
   );
 }
 
